@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Login</title>
+  <link rel="stylesheet" href="./login.css.css" />
+  
+</head>
+<body>
+  <div class="login_form">
+    <form id="form">
+      <h3>Log in</h3>
+      <br>
+      <hr>
+      <br>
+     
+      <div class="input_box">
+        <label for="email">Email</label>
+        <input type="email" id="email" placeholder="Enter email address" required />
+        <span style="color:red" id="email_error"></span>
+      </div>
+  
+      <div class="input_box">
+        <div class="password_title">
+          <label for="password">Password</label>
+          <a href="#">Forgot Password?</a>
+        </div>
+        <input type="password" id="password" placeholder="Enter your password" required />
+        <span style="color:red" id="pass_error"></span>
+      </div>
+  
+      <button type="submit">Log In</button>
+      <p class="sign_up">Don't have an account? <a href="">Sign up</a></p>
+    </form>
+  </div>
+
+  <script>
+    // JavaScript për validim
+    const email = document.getElementById('email');
+    const password = document.getElementById('password');
+    const form = document.getElementById('form');
+  
+    const email_error = document.getElementById('email_error');
+    const pass_error = document.getElementById('pass_error');
+  
+    // Shtojmë një event listener për dërgimin e formularit
+    form.addEventListener('submit', (e) => {
+      // Parandalon dërgimin e formularit përpara se të bëhen verifikimet
+      e.preventDefault();
+  
+      let valid = true;   
+      
+      const email_check = /^[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,4}$/;
+  
+      if (!email.value.match(email_check)) {
+        email_error.innerHTML = "Ju lutem, futni një email të vlefshëm.";
+        valid = false;
+      } else {
+        email_error.innerHTML = "";  
+      }
+  
+      if (password.value.length <= 5) {
+        pass_error.innerHTML = "Fjalëkalimi duhet të jetë më shumë se 6 karaktere.";
+        valid = false;
+      } else if (password.value.length >= 20) {
+        pass_error.innerHTML = "Fjalëkalimi nuk mund të jetë më shumë se 20 karaktere.";
+        valid = false;
+      } else if (password.value === 'password') {
+        pass_error.innerHTML = "Fjalëkalimi nuk mund të jetë 'password'.";
+        valid = false;
+      } else {
+        pass_error.innerHTML = "";  
+      }
+  
+      if (valid) {
+        form.submit();  
+        alert("Logimi është bërë me sukses!");
+      }
+    });
+  </script>
+</body>
+</html>
