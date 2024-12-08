@@ -186,3 +186,32 @@ header{
     font-weight: 500;
     margin-left: 4px;
 }
+footer{
+    margin-top: 5rem;
+    background-color:var(--second-color);
+    
+    border-radius: 5rem 0 0 0;
+}
+footer h2{
+    background-color: var(--second-color);
+}
+.footer-container {
+    display: grid;
+    background-color: var(--second-color);
+   
+    grid-template-columns: repeat(auto-fit,minmax(240px,auto));
+    gap: 2rem;
+}
+.footer-box{
+    background-color: var(--second-color);
+    text-align: center;
+    
+}
+.footer-box h3{
+    background-color: var(--second-color);
+}
+.footer-box a{
+    background-color: var(--second-color);
+    display: block;
+    text-decoration: underline;
+}
